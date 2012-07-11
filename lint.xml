@@ -1,3 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <lint>
+    <issue id="NewApi">
+        <ignore path="src\com\google\zxing\integration\android\IntentIntegratorV30.java" />
+    </issue>
 </lint>
