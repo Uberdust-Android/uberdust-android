@@ -24,7 +24,7 @@ import android.os.Bundle;
  *
  */
 
-public class UsersActivity extends DashboardActivity 
+public class FourSquareActivity extends DashboardActivity 
 {
 
 /**
@@ -42,7 +42,7 @@ public class UsersActivity extends DashboardActivity
 protected void onCreate(Bundle savedInstanceState) 
 {
     super.onCreate(savedInstanceState);
-    setContentView (R.layout.activity_users);
+    setContentView (R.layout.activity_foursquare);
     setTitleFromActivityLabel (R.id.title_text);
 }
 } // end class

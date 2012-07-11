@@ -31,7 +31,7 @@
             android:theme="@style/Theme.D1"
             android:label="@string/browse"
             android:screenOrientation="portrait"/>
-      <activity android:name=".UsersActivity"
+      <activity android:name=".FourSquareActivity"
             android:theme="@style/Theme.D1"
             android:label="@string/title_feature5"
             android:screenOrientation="portrait"/>

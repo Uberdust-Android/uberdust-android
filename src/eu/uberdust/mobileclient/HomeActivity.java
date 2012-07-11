@@ -202,7 +202,7 @@ public void onClickFeature (View v)
            startActivity(new Intent(getApplicationContext(), CommandRoomActivity.class));
            break;
       case R.id.home_btn_feature5 :
-           startActivity (new Intent(getApplicationContext(), UsersActivity.class));
+           startActivity (new Intent(getApplicationContext(), FourSquareActivity.class));
            break;
       case R.id.home_btn_feature6 :
            startActivity (new Intent(getApplicationContext(), PreferencesActivity.class));
