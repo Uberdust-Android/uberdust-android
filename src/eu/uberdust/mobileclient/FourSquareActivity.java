@@ -59,10 +59,10 @@ public void onActivityResult(int requestCode, int resultCode, Intent intent) {
 	  IntentResult scanResult = IntentIntegrator.parseActivityResult(requestCode, resultCode, intent);
 	  if (scanResult != null) {
 	    // handle scan result
-		Log.v("MINE", "SUCCESS");
+		Log.d("MINE", "SUCCESS");
 	  }
 	  // else continue with any other code you need in the method
-	  Log.v("MINE", "FAILURE");
+	  Log.d("MINE", "NEXT");
 	}
 
 } // end class
