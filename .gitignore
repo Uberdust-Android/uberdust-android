@@ -3,6 +3,8 @@
 /LibProjects/ViewPageIndicator/bin*
 /LibProjects/GraphView/gen*
 /LibProjects/GraphView/bin*
+/LibProjects/lorensiuswlt-AndroidFoursquare-f36179e/gen*
+/LibProjects/lorensiuswlt-AndroidFoursquare-f36179e/bin*
 
 # built application files
 *.apk
