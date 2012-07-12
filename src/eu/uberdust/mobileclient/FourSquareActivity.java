@@ -19,6 +19,7 @@ package eu.uberdust.mobileclient;
 import net.londatiga.fsq.FoursquareApp;
 import net.londatiga.fsq.FoursquareApp.FsqAuthListener;
 import net.londatiga.fsq.R;
+import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.view.View;
@@ -31,6 +32,8 @@ import android.widget.Toast;
  * It displays some text and provides a way to get back to the home activity.
  *
  */
+
+
 
 public class FourSquareActivity extends DashboardActivity 
 {
@@ -52,6 +55,10 @@ public class FourSquareActivity extends DashboardActivity
 	private FoursquareApp mFsqApp;
 	private ProgressDialog mProgress;
 	TextView nameTv;
+	
+	public static final String VENEUEID = "4ec2ad3877c887a3c79c339b";
+	public static final String SHOUT = "I am at Pspace!!!";
+	
 	
 	public static final String CLIENT_ID = "LNFM5FKJS3WWNHSJDKGACIXUZVC22KX1PFVXJ1U4T20WZWD1";
 	public static final String CLIENT_SECRET = "LTDGM44SWMR3RGKJXYFXCHSGOTFSLIJ14JRQVSVDQAPVCA32";
