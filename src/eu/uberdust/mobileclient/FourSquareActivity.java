@@ -16,6 +16,7 @@
 
 package eu.uberdust.mobileclient;
 
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -61,8 +62,9 @@ protected void onCreate(Bundle savedInstanceState)
     final Button button = (Button) findViewById(R.id.button1);
     button.setOnClickListener(new View.OnClickListener() {
         public void onClick(View v) {
-        	 IntentIntegrator integrator = new IntentIntegrator(FourSquareActivity.this);
-        	    integrator.initiateScan();
+        	IntentIntegrator integrator = new IntentIntegrator(FourSquareActivity.this);
+        	integrator.initiateScan(IntentIntegrator.QR_CODE_TYPES);
+
         }
     });
     
@@ -72,14 +74,18 @@ protected void onCreate(Bundle savedInstanceState)
 }
 
 public void onActivityResult(int requestCode, int resultCode, Intent intent) {
-	  IntentResult scanResult = IntentIntegrator.parseActivityResult(requestCode, resultCode, intent);
-	  if (scanResult != null) {
-	    // handle scan result
-		Log.d("MINE", "SUCCESS");
-	  }
-	  // else continue with any other code you need in the method
-	  Log.d("MINE", "NEXT");
-	}
+    IntentResult result = IntentIntegrator.parseActivityResult(requestCode, resultCode, intent);
+    if (result != null) {
+      String contents = result.getContents();
+      if (contents != null) {
+        Log.d("SCAN",result.getContents());
+      } else {
+    	  Log.d("SCAN",result.toString());
+      }
+    }
+  }
+
+
 
 
 } // end class
