@@ -3,7 +3,7 @@
     android:versionCode="1"
     android:versionName="1.0" xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <uses-sdk android:minSdkVersion="4" 
+    <uses-sdk android:minSdkVersion="8" 
               android:targetSdkVersion="8" />
     <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
@@ -31,7 +31,7 @@
             android:theme="@style/Theme.D1"
             android:label="@string/browse"
             android:screenOrientation="portrait"/>
-      <activity android:name=".UsersActivity"
+      <activity android:name=".FourSquareActivity"
             android:theme="@style/Theme.D1"
             android:label="@string/title_feature5"
             android:screenOrientation="portrait"/>

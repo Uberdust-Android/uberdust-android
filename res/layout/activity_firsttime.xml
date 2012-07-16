@@ -55,11 +55,29 @@
     	android:layout_width="fill_parent" 
     	android:layout_height="wrap_content"         
         />
-    <Button
-        android:id="@+id/firsttime_serverbutton"
-        android:layout_gravity="right"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:onClick="onClickOk"
-        android:text="@string/firsttime_buttontext" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <Button
+            android:id="@+id/firsttime_serverbutton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:onClick="onClickOk"
+            android:text="@string/firsttime_buttontext" />
+
+        <Button
+            android:id="@+id/scanbutton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+             android:onClick="onClickScan"
+            android:text="Scan Server" />
+
+    </RelativeLayout>
+
 </LinearLayout>

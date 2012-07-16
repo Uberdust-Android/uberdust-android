@@ -3,6 +3,9 @@ package eu.uberdust.mobileclient;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.google.zxing.integration.android.IntentIntegrator;
+import com.google.zxing.integration.android.IntentResult;
+
 import eu.uberdust.mobileclient.datasource.DataSource;
 import eu.uberdust.mobileclient.datasource.ServerDatabaseHandler;
 import eu.uberdust.mobileclient.model.Server;
@@ -13,24 +16,33 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 
 public class FirstTimeActivity extends Activity {
+	
+	EditText serverName;
+	EditText serverUrl;
+	
     /** Called when the activity is first created. */
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_firsttime);
         
-        
+        serverName = (EditText) findViewById(R.id.firsttime_servername);
+        serverUrl = (EditText) findViewById(R.id.firsttime_serverurl);
+    }
+    
+    public void onClickScan(View v){
+    	IntentIntegrator integrator = new IntentIntegrator(FirstTimeActivity.this);
+    	integrator.initiateScan(IntentIntegrator.QR_CODE_TYPES);
     }
     
     public void onClickOk(View v)
     {
     	int i;
-    	EditText serverName = (EditText) findViewById(R.id.firsttime_servername);
-    	EditText serverUrl = (EditText) findViewById(R.id.firsttime_serverurl);
     	
     	ServerDatabaseHandler serverDatabase = new ServerDatabaseHandler(this);
     	Server newServer = new Server();
@@ -82,5 +94,21 @@ public class FirstTimeActivity extends Activity {
     	startActivity (new Intent(getApplicationContext(), HomeActivity.class));
     	this.finish();
     }
+    
+    
+    public void onActivityResult(int requestCode, int resultCode, Intent intent) {
+    	String[] args; 
+        IntentResult result = IntentIntegrator.parseActivityResult(requestCode, resultCode, intent);
+        if (result != null) {
+          String contents = result.getContents();
+          if (contents != null) {
+            args=contents.split(" ",2);
+            serverName.setText(args[0]);
+            serverUrl.setText(args[1]);
+          } else {
+        	  Log.d("SCAN","FAIL");
+          }
+        }
+      }
     
 }
