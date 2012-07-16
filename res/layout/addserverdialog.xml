@@ -36,4 +36,14 @@
     android:layout_toLeftOf="@id/addserverdialog_okbutton"
     android:layout_width="wrap_content"
     android:layout_height="40dp" />
+
+<Button
+    android:id="@+id/scanbutton"
+    android:layout_width="wrap_content"
+    android:layout_height="40dp"
+    android:layout_alignBaseline="@+id/addserverdialog_cancelbutton"
+    android:layout_alignBottom="@+id/addserverdialog_cancelbutton"
+    android:layout_alignParentLeft="true"
+    android:text="Scan" />
+
 </RelativeLayout>

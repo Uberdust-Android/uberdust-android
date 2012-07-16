@@ -4,6 +4,9 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import com.google.zxing.integration.android.IntentIntegrator;
+import com.google.zxing.integration.android.IntentResult;
+
 import eu.uberdust.mobileclient.datasource.DataSource;
 import eu.uberdust.mobileclient.datasource.ServerDatabaseHandler;
 import eu.uberdust.mobileclient.model.GlobalData;
@@ -14,9 +17,11 @@ import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.AdapterView;
@@ -39,11 +44,15 @@ public class ServerPreferencesActivity extends DashboardActivity {
 	private ProgressDialog loadingDialog;
 	private AlertDialog testbedSelect;
 	
+	EditText serverName;
+	EditText serverUrl;
+	
 	@Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_serverpreferences);
           
+        
         listView = (ListView)findViewById(R.id.serverpreferenceslist);
 
         // Create the item mapping
@@ -80,10 +89,13 @@ public class ServerPreferencesActivity extends DashboardActivity {
 		//set up dialog
 		newServerDialog = new Dialog(this);
 		newServerDialog.setContentView(R.layout.addserverdialog);
+		serverName = (EditText) newServerDialog.findViewById(R.id.addserverdialog_name);
+        serverUrl = (EditText) newServerDialog.findViewById(R.id.addserverdialog_url);
 		newServerDialog.setTitle("Add server");
 		newServerDialog.setCancelable(true);
 		Button okButton = (Button) newServerDialog.findViewById(R.id.addserverdialog_okbutton);
 		Button cancelButton = (Button) newServerDialog.findViewById(R.id.addserverdialog_cancelbutton);
+		Button scanButton = (Button) newServerDialog.findViewById(R.id.scanbutton);
 		okButton.setOnClickListener(new OnClickListener() {
 		    @Override
 		    public void onClick(View v) {
@@ -96,6 +108,13 @@ public class ServerPreferencesActivity extends DashboardActivity {
 		    	dialogCancelClick();
 		    }
 		  });
+		scanButton.setOnClickListener(new OnClickListener() {
+		    @Override
+		    public void onClick(View v) {
+		    	dialogScanClick();
+		    }
+		  });
+		
 		newServerDialog.show();
     }
 
@@ -153,8 +172,7 @@ public class ServerPreferencesActivity extends DashboardActivity {
 	public void dialogOkClick()
 	{
 		int i;
-		EditText serverName = (EditText) newServerDialog.findViewById(R.id.addserverdialog_name);
-		EditText serverUrl = (EditText) newServerDialog.findViewById(R.id.addserverdialog_url);
+		
 		
 		final Server newServer = new Server();
 		newServer.setName(serverName.getText().toString());
@@ -193,6 +211,28 @@ public class ServerPreferencesActivity extends DashboardActivity {
     	fillListFromDatabase();
     	testbedSelect.dismiss();
 	}
+	
+	public void dialogScanClick()
+	{
+		IntentIntegrator integrator = new IntentIntegrator(ServerPreferencesActivity.this);
+    	integrator.initiateScan(IntentIntegrator.QR_CODE_TYPES);
+	}
+	
+	public void onActivityResult(int requestCode, int resultCode, Intent intent) {
+    	String[] args; 
+        IntentResult result = IntentIntegrator.parseActivityResult(requestCode, resultCode, intent);
+        if (result != null) {
+          String contents = result.getContents();
+          if (contents != null) {
+            args=contents.split(" ",2);
+            serverName.setText(args[0]);
+            serverUrl.setText(args[1]);
+          } else {
+        	  Log.d("SCAN","FAIL");
+          }
+        }
+      }
+	
 	
 	private class DownloadTask extends AsyncTask<String, Integer, Long> {
 	    protected Long doInBackground(String... arguments) {

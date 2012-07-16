@@ -76,7 +76,7 @@
             android:layout_alignParentLeft="true"
             android:layout_alignParentTop="true"
              android:onClick="onClickScan"
-            android:text="Scan" />
+            android:text="Scan Server" />
 
     </RelativeLayout>
 
