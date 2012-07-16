@@ -78,9 +78,9 @@ public void onActivityResult(int requestCode, int resultCode, Intent intent) {
     if (result != null) {
       String contents = result.getContents();
       if (contents != null) {
-        Log.d("SCAN",result.getContents());
+        Log.d("SCAN",contents);
       } else {
-    	  Log.d("SCAN",result.toString());
+    	  Log.d("SCAN","FAIL");
       }
     }
   }

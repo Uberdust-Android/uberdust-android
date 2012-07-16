@@ -16,6 +16,7 @@
 
 package com.google.zxing.integration.android;
 
+import android.annotation.TargetApi;
 import android.app.Fragment;
 import android.content.Intent;
 
@@ -24,6 +25,8 @@ import android.content.Intent;
  * 
  * @author Lachezar Dobrev
  */
+
+@TargetApi(11)
 public final class IntentIntegratorV30 extends IntentIntegrator {
 
   private final Fragment fragment;
