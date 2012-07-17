@@ -21,20 +21,21 @@ public class MyFragmentAdapter extends FragmentPagerAdapter {
 		
 		typep=type;
 		
-		for(int i=0;i<currentRoom.getNodenum();i++){
-			for(int j=0;j<currentRoom.getNode(i).getCapabilitiesNum();j++){
-				mCount++;
-				listnode.add(currentRoom.getNode(i));
-				listcap.add(currentRoom.getNode(i).getCapability(j));
+		if(type!=2){
+			for(int i=0;i<currentRoom.getNodenum();i++){
+				for(int j=0;j<currentRoom.getNode(i).getCapabilitiesNum();j++){
+					mCount++;
+					listnode.add(currentRoom.getNode(i));
+					listcap.add(currentRoom.getNode(i).getCapability(j));
 				
+				}
+			}
+		
+			CONTENT = new String[mCount];
+			for(int i=0;i<mCount;i++){
+				CONTENT[i]= listcap.get(i).getAttribute();
 			}
 		}
-		
-		CONTENT = new String[mCount];
-		for(int i=0;i<mCount;i++){
-			CONTENT[i]= listcap.get(i).getAttribute();
-		}
-		
 	}
 
 	@Override
@@ -42,7 +43,7 @@ public class MyFragmentAdapter extends FragmentPagerAdapter {
 		switch(typep){
 			case 0: return MyCapabilitiesFragment.newInstance(listcap.get(position) , listnode.get(position).getName());
 			case 1: return MyCommandFragment.newInstance(listcap.get(position) , listnode.get(position).getName());
-			case 2: return MyHistoryFragment.newInstance(listnode.get(position).getName());
+			case 2: return MyHistoryFragment.newInstance(CONTENT[position % CONTENT.length]);
 		}
 		return null;
 		
