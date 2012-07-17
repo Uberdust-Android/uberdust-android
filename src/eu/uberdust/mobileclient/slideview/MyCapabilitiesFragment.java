@@ -15,7 +15,7 @@ import eu.uberdust.mobileclient.model.Capability;
 import eu.uberdust.mobileclient.model.GlobalData;
 import eu.uberdust.mobileclient.model.Reading;
 
-public final class MyFragment extends Fragment {
+public final class MyCapabilitiesFragment extends Fragment {
 	private static  GlobalData gdata;
 	
     private Capability currentCapability;
@@ -25,10 +25,10 @@ public final class MyFragment extends Fragment {
 	View view;
 
 
-	public static MyFragment newInstance(Capability capab, String noden ) {
+	public static MyCapabilitiesFragment newInstance(Capability capab, String noden ) {
 		
-		MyFragment fragment;
-		fragment = new MyFragment();
+		MyCapabilitiesFragment fragment;
+		fragment = new MyCapabilitiesFragment();
 		fragment.currentCapability= capab;
 		fragment.nodename=noden;
 		

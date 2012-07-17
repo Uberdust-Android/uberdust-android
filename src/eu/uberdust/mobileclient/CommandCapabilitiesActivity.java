@@ -30,7 +30,7 @@ import com.viewpagerindicator.TitlePageIndicator;
 
 import eu.uberdust.mobileclient.model.GlobalData;
 import eu.uberdust.mobileclient.model.RoomTree;
-import eu.uberdust.mobileclient.slideview.MyCommandTitleFragmentAdapter;
+import eu.uberdust.mobileclient.slideview.MyTitleFragmentAdapter;
 
 
 /**
@@ -42,7 +42,7 @@ import eu.uberdust.mobileclient.slideview.MyCommandTitleFragmentAdapter;
 public class CommandCapabilitiesActivity extends FragmentActivity 
 {
 
-	MyCommandTitleFragmentAdapter mAdapter;
+	MyTitleFragmentAdapter mAdapter;
 	ViewPager mPager;
 	PageIndicator mIndicator;
 	public RoomTree currentRoom;
@@ -69,7 +69,7 @@ protected void onCreate(Bundle savedInstanceState)
     GlobalData gdata = (GlobalData) getApplicationContext();
     currentRoom=gdata.getCurrentRoom();
     
-    mAdapter = new MyCommandTitleFragmentAdapter(getSupportFragmentManager() , currentRoom);
+    mAdapter = new MyTitleFragmentAdapter(getSupportFragmentManager() , currentRoom);
     
 	mPager = (ViewPager)findViewById(R.id.pager);
 	mPager.setAdapter(mAdapter);

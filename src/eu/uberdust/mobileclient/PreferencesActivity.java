@@ -21,12 +21,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.prefs.Preferences;
 
-import eu.uberdust.mobileclient.datasource.DataSource;
-import eu.uberdust.mobileclient.datasource.ServerDatabaseHandler;
-import eu.uberdust.mobileclient.model.GlobalData;
-import eu.uberdust.mobileclient.model.Server;
-import eu.uberdust.mobileclient.model.Testbed;
-
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
@@ -41,6 +35,11 @@ import android.preference.Preference.OnPreferenceClickListener;
 import android.preference.PreferenceActivity;
 import android.view.View;
 import android.widget.TextView;
+import eu.uberdust.mobileclient.datasource.DataSource;
+import eu.uberdust.mobileclient.datasource.ServerDatabaseHandler;
+import eu.uberdust.mobileclient.model.GlobalData;
+import eu.uberdust.mobileclient.model.Server;
+import eu.uberdust.mobileclient.model.Testbed;
 
 /**
  * This is the activity for feature 6 in the dashboard application.

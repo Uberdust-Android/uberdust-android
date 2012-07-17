@@ -13,11 +13,11 @@ import android.widget.Toast;
 import com.viewpagerindicator.PageIndicator;
 import com.viewpagerindicator.TitlePageIndicator;
 
-import eu.uberdust.mobileclient.slideview.MyHistoryFragmentAdapter;
-import eu.uberdust.mobileclient.slideview.MyHistoryTitleFragmentAdapter;
+import eu.uberdust.mobileclient.slideview.MyFragmentAdapter;
+import eu.uberdust.mobileclient.slideview.MyTitleFragmentAdapter;
 
 public class ReadingsHistoryActivity extends FragmentActivity {
-	MyHistoryFragmentAdapter mAdapter;
+	MyFragmentAdapter mAdapter;
 	ViewPager mPager;
 	PageIndicator mIndicator; 
 	
@@ -28,7 +28,7 @@ public class ReadingsHistoryActivity extends FragmentActivity {
 	    setContentView (R.layout.activity_history);
 	    setTitleFromActivityLabel (R.id.title_text);
 	    
-	    mAdapter = new MyHistoryTitleFragmentAdapter(getSupportFragmentManager());
+	    mAdapter = new MyTitleFragmentAdapter(getSupportFragmentManager(), null);
 	    
 		mPager = (ViewPager)findViewById(R.id.history_pager);
 		mPager.setAdapter(mAdapter);

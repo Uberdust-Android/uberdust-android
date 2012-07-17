@@ -37,7 +37,7 @@ public class MyFragmentAdapter extends FragmentPagerAdapter {
 
 	@Override
 	public Fragment getItem(int position) {
-		return MyFragment.newInstance(listcap.get(position) , listnode.get(position).getName());
+		return MyCapabilitiesFragment.newInstance(listcap.get(position) , listnode.get(position).getName());
 	}
 
 	@Override
