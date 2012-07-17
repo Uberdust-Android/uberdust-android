@@ -21,22 +21,48 @@ public class MyFragmentAdapter extends FragmentPagerAdapter {
 		
 		typep=type;
 		
-		if(type!=2){
-			for(int i=0;i<currentRoom.getNodenum();i++){
-				for(int j=0;j<currentRoom.getNode(i).getCapabilitiesNum();j++){
-					mCount++;
-					listnode.add(currentRoom.getNode(i));
-					listcap.add(currentRoom.getNode(i).getCapability(j));
+		switch(type){
+			case 0:{
+				for(int i=0;i<currentRoom.getNodenum();i++){
+					for(int j=0;j<currentRoom.getNode(i).getCapabilitiesNum();j++){
+						mCount++;
+						listnode.add(currentRoom.getNode(i));
+						listcap.add(currentRoom.getNode(i).getCapability(j));
 				
+					}
 				}
-			}
 		
-			CONTENT = new String[mCount];
-			for(int i=0;i<mCount;i++){
-				CONTENT[i]= listcap.get(i).getAttribute();
+				CONTENT = new String[mCount];
+				for(int i=0;i<mCount;i++){
+					CONTENT[i]= listcap.get(i).getAttribute();
+				}
+				break;
+			}
+			
+			case 1:{
+				for(int i=0;i<currentRoom.getNodenum();i++){
+					for(int j=0;j<currentRoom.getNode(i).getCapabilitiesNum();j++){
+						mCount++;
+						listnode.add(currentRoom.getNode(i));
+						listcap.add(currentRoom.getNode(i).getCapability(j));
+				
+					}
+				}
+		
+				CONTENT = new String[mCount];
+				for(int i=0;i<mCount;i++){
+					CONTENT[i]= listcap.get(i).getAttribute();
+				}
+				break;
+			}
+			
+			case 2:{
+				CONTENT[0]="History";
+				CONTENT[1]="Graph";
+				break;
 			}
 		}
-	}
+	} 
 
 	@Override
 	public Fragment getItem(int position) {
