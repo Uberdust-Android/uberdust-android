@@ -28,6 +28,7 @@ public class ReadingsHistoryActivity extends FragmentActivity {
 	    setContentView (R.layout.activity_history);
 	    setTitleFromActivityLabel (R.id.title_text);
 	    
+	    
 	    mAdapter = new MyTitleFragmentAdapter(getSupportFragmentManager(), null , 2);
 	    
 		mPager = (ViewPager)findViewById(R.id.history_pager);

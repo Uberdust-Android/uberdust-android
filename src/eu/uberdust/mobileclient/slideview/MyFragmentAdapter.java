@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
+import android.util.Log;
 import eu.uberdust.mobileclient.model.Capability;
 import eu.uberdust.mobileclient.model.NodeTree;
 import eu.uberdust.mobileclient.model.RoomTree;
@@ -69,7 +70,7 @@ public class MyFragmentAdapter extends FragmentPagerAdapter {
 		switch(typep){
 			case 0: return MyCapabilitiesFragment.newInstance(listcap.get(position) , listnode.get(position).getName());
 			case 1: return MyCommandFragment.newInstance(listcap.get(position) , listnode.get(position).getName());
-			case 2: return MyHistoryFragment.newInstance(CONTENT[position % CONTENT.length]);
+			case 2:{Log.d("HISTORY", CONTENT[position % CONTENT.length]); return MyHistoryFragment.newInstance(CONTENT[position % CONTENT.length]); }
 		}
 		return null;
 		
