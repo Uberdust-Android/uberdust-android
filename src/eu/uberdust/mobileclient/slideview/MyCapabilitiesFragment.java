@@ -25,7 +25,7 @@ public final class MyCapabilitiesFragment extends Fragment {
 	View view;
 
 
-	public static MyCapabilitiesFragment newInstance(Capability capab, String noden ) {
+	public static MyCapabilitiesFragment newInstance(Capability capab, String noden) {
 		
 		MyCapabilitiesFragment fragment;
 		fragment = new MyCapabilitiesFragment();

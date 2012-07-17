@@ -4,8 +4,8 @@ import android.support.v4.app.FragmentManager;
 import eu.uberdust.mobileclient.model.RoomTree;
 
 public class MyTitleFragmentAdapter extends MyFragmentAdapter {
-	public MyTitleFragmentAdapter(FragmentManager fm, RoomTree currentRoom) {
-		super(fm, currentRoom);
+	public MyTitleFragmentAdapter(FragmentManager fm, RoomTree currentRoom, int type) {
+		super(fm, currentRoom, type);
 	}
 
 	@Override

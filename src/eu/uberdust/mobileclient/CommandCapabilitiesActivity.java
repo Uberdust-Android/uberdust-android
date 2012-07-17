@@ -69,7 +69,7 @@ protected void onCreate(Bundle savedInstanceState)
     GlobalData gdata = (GlobalData) getApplicationContext();
     currentRoom=gdata.getCurrentRoom();
     
-    mAdapter = new MyTitleFragmentAdapter(getSupportFragmentManager() , currentRoom);
+    mAdapter = new MyTitleFragmentAdapter(getSupportFragmentManager() , currentRoom, 1);
     
 	mPager = (ViewPager)findViewById(R.id.pager);
 	mPager.setAdapter(mAdapter);

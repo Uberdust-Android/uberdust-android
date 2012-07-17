@@ -13,11 +13,13 @@ public class MyFragmentAdapter extends FragmentPagerAdapter {
 	protected static String[]  CONTENT;
 	private ArrayList<Capability> listcap = new ArrayList<Capability>();
 	private ArrayList<NodeTree> listnode = new ArrayList<NodeTree>();
-	
+	private int typep =0;
 	private int mCount = 0;
 
-	public MyFragmentAdapter(FragmentManager fm, RoomTree currentRoom) {
+	public MyFragmentAdapter(FragmentManager fm, RoomTree currentRoom, int type) {
 		super(fm);
+		
+		typep=type;
 		
 		for(int i=0;i<currentRoom.getNodenum();i++){
 			for(int j=0;j<currentRoom.getNode(i).getCapabilitiesNum();j++){
@@ -37,7 +39,13 @@ public class MyFragmentAdapter extends FragmentPagerAdapter {
 
 	@Override
 	public Fragment getItem(int position) {
-		return MyCapabilitiesFragment.newInstance(listcap.get(position) , listnode.get(position).getName());
+		switch(typep){
+			case 0: return MyCapabilitiesFragment.newInstance(listcap.get(position) , listnode.get(position).getName());
+			case 1: return MyCommandFragment.newInstance(listcap.get(position) , listnode.get(position).getName());
+			case 2: return MyHistoryFragment.newInstance(listnode.get(position).getName());
+		}
+		return null;
+		
 	}
 
 	@Override
