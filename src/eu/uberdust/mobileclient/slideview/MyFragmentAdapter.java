@@ -58,8 +58,8 @@ public class MyFragmentAdapter extends FragmentPagerAdapter {
 			}
 			
 			case 2:{
-				CONTENT[0]="History";
-				CONTENT[1]="Graph";
+				CONTENT = new String[] { "History", "Graph", };
+				mCount = CONTENT.length;
 				break;
 			}
 		}
@@ -70,7 +70,7 @@ public class MyFragmentAdapter extends FragmentPagerAdapter {
 		switch(typep){
 			case 0: return MyCapabilitiesFragment.newInstance(listcap.get(position) , listnode.get(position).getName());
 			case 1: return MyCommandFragment.newInstance(listcap.get(position) , listnode.get(position).getName());
-			case 2:{Log.d("HISTORY", CONTENT[position % CONTENT.length]); return MyHistoryFragment.newInstance(CONTENT[position % CONTENT.length]); }
+			case 2: return MyHistoryFragment.newInstance(CONTENT[position % CONTENT.length]);
 		}
 		return null;
 		
